@@ -15,12 +15,13 @@ else
     docker build -t $DOCKER_IMAGE_NAME .
 fi
 
-# Проверяем, запущен ли контейнер $CONTAINER_NAME
-if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
-    echo "Контейнер $CONTAINER_NAME запущен, останавливаем его."
+# Проверяем, существует ли контейнер $CONTAINER_NAME
+if docker ps -a --format '{{.Names}}' | grep -q "^$CONTAINER_NAME$"; then
+    echo "Контейнер $CONTAINER_NAME существует, останавливаем его."
     docker stop $CONTAINER_NAME
+    docker rm $CONTAINER_NAME
 else
-    echo "Контейнер $CONTAINER_NAME не запущен."
+    echo "Контейнер $CONTAINER_NAME не существует."
 fi
 
 # Запуск контейнера с новым образом
