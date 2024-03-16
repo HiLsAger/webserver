@@ -9,10 +9,9 @@ read PORT
 
 # Проверяем, существует ли сборка образа $DOCKER_IMAGE_NAME
 if docker images "$DOCKER_IMAGE_NAME" | grep -q "$DOCKER_IMAGE_NAME"; then
-    echo "Сборка образа $DOCKER_IMAGE_NAME уже существует."
+    echo "Сборка образа $DOCKER_IMAGE_NAME существует."
 else
-    echo "Сборка образа $DOCKER_IMAGE_NAME не найдена. Начинаем сборку..."
-    docker build -t $DOCKER_IMAGE_NAME .
+    echo "Сборка образа $DOCKER_IMAGE_NAME не найдена. запустите установку webserver при помощи sh webserver-install.sh"
 fi
 
 # Проверяем, существует ли контейнер $CONTAINER_NAME
