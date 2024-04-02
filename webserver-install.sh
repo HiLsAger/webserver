@@ -2,7 +2,14 @@
 
 DOCKER_IMAGE_NAME="webserver-apache"
 BASH_ALIASES_FILE=~/.bash_aliases
-RELOADED_FILE=~/.bashrc
+
+DIR_PATH=$(pwd)
+
+export PATH="/usr/bin:/bin:$DIR_PATH"
+
+GREEN="\033[32m"
+YALLOW="\033[33m"
+GRAY="\033[37m"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -10,11 +17,11 @@ fi
 
 # Создание алиасов
 echo 'Установка алиасов'
-echo 'alias webserver-run="sh webserver-run.sh"' >> "$BASH_ALIASES_FILE"
-echo 'alias webserver-stop="sh webserver-stop.sh"' >> "$BASH_ALIASES_FILE"
-echo 'alias webserver-help="sh webserver-help.sh"' >> "$BASH_ALIASES_FILE"
-echo 'alias webserver-restart="sh webserver-restart.sh"' >> "$BASH_ALIASES_FILE"
-echo 'alias webserver-bash="sh webserver-bash.sh"' >> "$BASH_ALIASES_FILE"
+echo "alias webserver-start=\"sh $DIR_PATH/webserver-start.sh\"" >> "$BASH_ALIASES_FILE"
+echo "alias webserver-stop=\"sh $DIR_PATH/webserver-stop.sh\"" >> "$BASH_ALIASES_FILE"
+echo "alias webserver-help=\"sh $DIR_PATH/webserver-help.sh\"" >> "$BASH_ALIASES_FILE"
+echo "alias webserver-restart=\"sh $DIR_PATH/webserver-restart.sh\"" >> "$BASH_ALIASES_FILE"
+echo "alias webserver-bash=\"sh $DIR_PATH/webserver-bash.sh\"" >> "$BASH_ALIASES_FILE"
 
 # Перезапись алиасов
 echo 'Перезапись алиасов'
@@ -31,4 +38,4 @@ else
 fi
 
 # Запуск контейнера с использованием алиаса
-echo 'Введите webserver-help чтобы получить больше информации'
+echo "Введите webserver-help чтобы получить больше информации"
