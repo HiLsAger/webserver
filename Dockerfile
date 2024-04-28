@@ -14,12 +14,19 @@ RUN apt-get install -y apache2 php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-
 
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN a2dismod php8.1
+RUN a2enmod php7.4
+RUN update-alternatives --set php /usr/bin/php7.4
+RUN service apache2 restart
+
 # Копирование файлов конфигурации
 COPY ./configs/apache/apache.conf /etc/phpmyadmin/apache.conf
+COPY ./configs/apache/apache2.conf /etc/apache2/apache2.conf
 COPY ./configs/apache/dir.conf /etc/apache2/mods-enabled/dir.conf
 COPY ./www/ /var/www/html/
+RUN a2enmod rewrite
 
-# Установка порта для прослушиванияsdfgsd
+# Установка порта для прослушивания
 EXPOSE 80
 
 # Запуск apache
