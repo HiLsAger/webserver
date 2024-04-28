@@ -21,4 +21,5 @@ echo "$YALLOW - webserver-stop $GRAY- Остановить докера конт
 echo "$YALLOW - webserver-bush $GRAY- получить доступ к консоли внутри докер контейнера"
 echo "$YALLOW - webserver-restart $GRAY- Перезапуск вебсервера внутри контейнера"
 echo "$YALLOW - webserver-help $GRAY- Получить больше информации по работе с вебсервером"
+echo "$YALLOW - webserver-rebuild $GRAY- Пересобрать сборку docker"
 echo "------------------------------------------------------------------------------"
