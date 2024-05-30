@@ -28,6 +28,15 @@ echo "alias webserver-rebuild=\"bash $DIR_PATH/webserver-rebuild.sh\"" >> "$BASH
 echo 'Перезапись алиасов'
 source ~/.bashrc
 
+WWW_DIR="$DIR_PATH/www"
+
+# Проверяем существует ли директория www
+if [ ! -d "$WWW_DIR" ]; then
+    mkdir -p "$WWW_DIR"
+    echo "Hello world!!!" > "$WWW_DIR/index.html"
+    echo "Файл index.html был $WWW_DIR создана."
+fi
+
 # Сборка Docker контейнера
 echo 'Сборка докер контейнера'
 # Проверяем, существует ли сборка образа $DOCKER_IMAGE_NAME
